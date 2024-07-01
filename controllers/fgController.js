@@ -10,19 +10,6 @@ exports.getAllFGs = async (req, res) => {
   }
 };
 
-// Get FG by ID
-exports.getFGById = async (req, res) => {
-  try {
-    const fg = await FG.findById(req.params.id);
-    if (fg == null) {
-      return res.status(404).json({ message: 'FG not found' });
-    }
-    res.json(fg);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 // Create new FG
 exports.createFG = async (req, res) => {
   const fg = new FG({
