@@ -6,13 +6,13 @@ const packageController = require('../controllers/PackageController');
 router.route('/').get(packageController.getAllPackages);
 
 // Get Package by ID
-router.route('/:name').get(packageController.getPackageByName);
+router.route('/:id').get(packageController.getPackageById);
 
 // Create new Package
 router.route('/').post(packageController.createPackage);
 
 // Update Package
-router.route('/:id').put(packageController.updatePackageByName);
+router.route('/:id').put(packageController.updatePackageById);
 
 // Delete Package
 router.route('/:name').delete(packageController.deletePackageByName);
