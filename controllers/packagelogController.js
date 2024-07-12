@@ -4,7 +4,12 @@ const Package = require('../models/Package');
 // Get all PackageLogs
 exports.getAllPackageLogs = async (req, res) => {
   try {
-    const packageLogs = await PackageLog.find();
+    const { approved } = req.query;
+    let filter = {};
+    if ( approved === 'true' || approved === 'false' ){
+      filter.approved = approved === 'true';
+    }
+    const packageLogs = await PackageLog.find(filter);
     res.json(packageLogs);
   } catch (error) {
     res.status(500).json({ message: error.message });
